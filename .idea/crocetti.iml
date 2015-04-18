@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="RUBY_MODULE" version="4">
+  <component name="CompassSettings">
+    <option name="compassSupportEnabled" value="true" />
+  </component>
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="PROVIDED" name="bundler (v1.7.6, RVM: ruby-1.9.3-p550 [global]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="diff-lcs (v1.2.5, RVM: ruby-1.9.3-p550 [global]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rack (v1.6.0, RVM: ruby-1.9.3-p550 [global]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rack-protection (v1.5.3, RVM: ruby-1.9.3-p550 [global]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rack-test (v0.6.3, RVM: ruby-1.9.3-p550 [global]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rspec (v3.2.0, RVM: ruby-1.9.3-p550 [global]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rspec-core (v3.2.3, RVM: ruby-1.9.3-p550 [global]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rspec-expectations (v3.2.1, RVM: ruby-1.9.3-p550 [global]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rspec-mocks (v3.2.1, RVM: ruby-1.9.3-p550 [global]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rspec-support (v3.2.2, RVM: ruby-1.9.3-p550 [global]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="sinatra (v1.4.6, RVM: ruby-1.9.3-p550 [global]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="tilt (v2.0.1, RVM: ruby-1.9.3-p550 [global]) [gem]" level="application" />
+  </component>
+</module>
+
