@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contents version="1" date="2010-1-1" template="template1.html">
+  <tag name="body">
+    <![CDATA[
+      Some HTML 4
+    ]]>
+  </tag>
+  <tag name="header">
+    <![CDATA[
+      Some HTML 4
+    ]]>
+  </tag>
+  <tag name="footer">
+    <![CDATA[
+      Some HTML 6
+    ]]>
+  </tag>
+</contents>
