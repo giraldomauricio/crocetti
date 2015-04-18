@@ -50,7 +50,7 @@ describe 'Templates Loading' do
     templates.set_location(Dir.pwd + '/tests/specs/templates/')
     template_file = templates.load_template('template1.html')
     expect(template_file).not_to be_nil
-    expect(template_file).to include('<cms:content name="header"/>')
+    expect(template_file).to include('<cms:content header/>')
   end
 
 end
