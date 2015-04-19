@@ -1,12 +1,13 @@
 require "rexml/document"
 require 'models/contents'
 require 'models/content'
+require 'logger'
 
 class Parser
 
   include REXML
 
-  attr_accessor :location
+  attr_accessor :location, :log
 
   def set_location(path)
     if(Dir.exists?path)
@@ -15,11 +16,14 @@ class Parser
   end
 
   def initialize
+    @log = Logger.new(STDOUT)
+    @log.info("Parser - Initialize")
     @location = nil
     set_location(ENV['CONTENTS_FOLDER'])
   end
 
   def extract(tag)
+    @log.info("Parser - Extract")
     result = []
     tags =  tag.scan(/<cms:content(.*)\/>/)
     tags.each { |tag| result << tag[0].strip }
@@ -27,6 +31,7 @@ class Parser
   end
 
   def load_content_file(file, version = "default")
+    @log.info("Parser - Load Content File:#{file} - Version: #{version} ")
     content_obj = Content.new
     contents = get_contents(file)
     if(contents)

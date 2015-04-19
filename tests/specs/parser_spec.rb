@@ -9,6 +9,10 @@ require 'models/contents'
 
 describe 'Parser processor' do
 
+  def app
+    Sinatra::Application
+  end
+
   it 'extracts the tag name' do
     parser = Parser.new
     tag = "<cms:content header/>"
@@ -113,6 +117,7 @@ describe 'Performs content changes' do
     expect(content.instance_of?(Content)).to eq(true)
     expect(content.contents.instance_of?(Array)).to eq(true)
     expect(content.contents[2].contents).to include('Some HTML 6')
+    expect(content.contents[2].name).to eq('footer')
   end
 
 end
