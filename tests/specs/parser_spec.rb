@@ -5,6 +5,7 @@ require 'rspec'
 require 'rack/test'
 require 'lib/parser'
 require 'lib/templates'
+require 'models/contents'
 
 describe 'Parser processor' do
 
@@ -84,16 +85,34 @@ describe 'Handles the versions' do
     expect(content).to include('Some HTML 6')
   end
 
+  it 'cannot load content from version' do
+    ENV['CONTENTS_FOLDER'] = Dir.pwd + '/tests/specs/contents/site/'
+    parser = Parser.new
+    content = parser.get_contents('section1/subsection1/foo')
+    expect(content).to be_nil
+  end
+
 end
+
+describe 'Load contents' do
+  it 'loads content from version' do
+    ENV['CONTENTS_FOLDER'] = Dir.pwd + '/tests/specs/contents/site/'
+    parser = Parser.new
+    content = parser.get_contents('section1/subsection1/page1')
+    expect(content).to include('Some HTML 6')
+  end
+end
+
 
 describe 'Performs content changes' do
 
   it "loads the contents file" do
-
     parser = Parser.new
-    content = parser.load_content_file()
+    content = parser.load_content_file('section1/subsection1/page1')
     expect(content).not_to be_nil
-
+    expect(content.instance_of?(Content)).to eq(true)
+    expect(content.contents.instance_of?(Array)).to eq(true)
+    expect(content.contents[2].contents).to include('Some HTML 6')
   end
 
 end

@@ -1,4 +1,10 @@
+require "rexml/document"
+require 'models/contents'
+require 'models/content'
+
 class Parser
+
+  include REXML
 
   attr_accessor :location
 
@@ -20,8 +26,25 @@ class Parser
     result
   end
 
-  def load_content_file(version = "default")
-    "something"
+  def load_content_file(file, version = "default")
+    content_obj = Content.new
+    contents = get_contents(file)
+    if(contents)
+      xml = Document.new contents
+      contents_array = []
+      content_obj.name = file
+      content_obj.version = xml.elements["contents"].attributes["version"]
+      content_obj.date = xml.elements["contents"].attributes["date"]
+      content_obj.template = xml.elements["contents"].attributes["template"]
+      xml.elements.each("contents/tag") do |tag|
+        node = Content.new
+        node.name = tag.attributes["name"]
+        node.contents = tag[1].to_s
+        contents_array << node
+      end
+    content_obj.contents = contents_array
+    end
+    content_obj
   end
 
   def load_sections
@@ -46,9 +69,11 @@ class Parser
       path += '/'
     end
     version = get_version(path)
-    contents_file = @location + path + 'version' + version + '.xml'
-    if(File.exists?(contents_file))
-      contents = File.open(contents_file,'rb').read
+    if (version)
+      contents_file = @location + path + 'version' + version + '.xml'
+      if(File.exists?(contents_file))
+        contents = File.open(contents_file,'rb').read
+      end
     end
     contents
   end
