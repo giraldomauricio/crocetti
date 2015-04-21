@@ -70,7 +70,8 @@ describe 'Handles the versions' do
     ENV['CONTENTS_FOLDER'] = Dir.pwd + '/tests/specs/contents/site/'
     parser = Parser.new
     sections = parser.load_sections
-    expect(sections.is_a?(Hash)).to eq(true)
+    puts sections.inspect
+    expect(sections.is_a?(Array)).to eq(true)
   end
 
   it 'loads a page version' do

@@ -89,7 +89,8 @@ class Parser
     Dir.foreach(path) do |entry|
       next if (entry == '..' || entry == '.')
       full_path = File.join(path, entry)
-      if File.directory?(full_path)
+      puts "--- " + full_path
+      if (File.directory?(full_path))
         children << directory_hash(full_path, entry)
       else
         #children << entry
