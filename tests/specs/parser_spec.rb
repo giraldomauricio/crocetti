@@ -71,7 +71,7 @@ describe 'Handles the versions' do
     parser = Parser.new
     sections = parser.load_sections
     puts sections.inspect
-    expect(sections.is_a?(Array)).to eq(true)
+    expect(sections.is_a?(Hash)).to eq(true)
   end
 
   it 'loads a page version' do
