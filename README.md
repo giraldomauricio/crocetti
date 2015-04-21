@@ -5,6 +5,8 @@ Why Crocetti? Well, if you like Sinatra (The singer) you may heard of Dean Marti
 
 TODO:
 
-- Travis
+- Travis (Done)
 - Build
 - Instructions
+
+[![Build Status](https://travis-ci.org/giraldomauricio/crocetti.svg?branch=master)](https://travis-ci.org/giraldomauricio/crocetti)

@@ -1,5 +1,5 @@
-language: jruby
+language: ruby
 rvm:
-  - "1.9.3"
-# uncomment this line if your project needs to run something other than `rake`:
+  - jruby-19mode # JRuby in 1.9 mode
+  
 script: bundle exec rspec tests/specs/
