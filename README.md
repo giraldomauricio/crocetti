@@ -5,7 +5,6 @@ Why Crocetti? Well, if you like Sinatra (The singer) you may heard of Dean Marti
 
 TODO:
 
-- Travis (Done)
 - Build
 - Instructions
 
