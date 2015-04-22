@@ -1,11 +1,4 @@
-ENV['RACK_ENV'] = 'test'
-
-require 'app'  # <-- your sinatra app
-require 'rspec'
-require 'rack/test'
-require 'lib/parser'
-require 'lib/templates'
-require 'models/contents'
+require File.expand_path '../spec_helper.rb', __FILE__
 
 describe 'Parser processor' do
 

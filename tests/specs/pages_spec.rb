@@ -1,9 +1,4 @@
-ENV['RACK_ENV'] = 'test'
-
-require 'app'  # <-- your sinatra app
-require 'rspec'
-require 'rack/test'
-require 'lib/pages'
+require File.expand_path '../spec_helper.rb', __FILE__
 
 describe 'Pages Operation' do
 

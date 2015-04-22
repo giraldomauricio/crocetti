@@ -1,8 +1,5 @@
-ENV['RACK_ENV'] = 'test'
+require File.expand_path '../spec_helper.rb', __FILE__
 
-require 'app'  # <-- your sinatra app
-require 'rspec'
-require 'rack/test'
 
 describe 'The main App' do
   include Rack::Test::Methods
