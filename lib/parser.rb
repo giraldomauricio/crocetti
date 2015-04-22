@@ -36,20 +36,24 @@ class Parser
     contents = get_contents(file)
     if(contents)
       xml = Document.new contents
-      contents_array = []
       content_obj.name = file
       content_obj.version = xml.elements["contents"].attributes["version"]
       content_obj.date = xml.elements["contents"].attributes["date"]
       content_obj.template = xml.elements["contents"].attributes["template"]
-      xml.elements.each("contents/tag") do |tag|
-        node = Content.new
-        node.name = tag.attributes["name"]
-        node.contents = tag[1].to_s
-        contents_array << node
-      end
-    content_obj.contents = contents_array
+      content_obj.contents = pull_content_tags(xml)
     end
     content_obj
+  end
+
+  def pull_content_tags(xml)
+    contents_array = []
+    xml.elements.each("contents/tag") do |tag|
+      node = Content.new
+      node.name = tag.attributes["name"]
+      node.contents = tag[1].to_s
+      contents_array << node
+    end
+    contents_array
   end
 
   def load_sections

@@ -7,6 +7,7 @@ require 'lib/templates'
 require 'lib/pages'
 require 'lib/parser'
 require 'models/contents'
+require "rexml/document"
 
 require "codeclimate-test-reporter"
-CodeClimate::TestReporter.start
+#CodeClimate::TestReporter.start

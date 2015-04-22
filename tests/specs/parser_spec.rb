@@ -115,3 +115,17 @@ describe 'Performs content changes' do
   end
 
 end
+
+describe 'process the xml correctly' do
+
+  it 'processes nodes correctly' do
+    include REXML
+    ENV['CONTENTS_FOLDER'] = Dir.pwd + '/tests/specs/contents/site/'
+    parser = Parser.new
+    contents = parser.get_contents('section1/subsection1/page1')
+    xml = REXML::Document.new contents
+    expect(parser.pull_content_tags(xml)).to be_instance_of(Array)
+    expect(parser.pull_content_tags(xml).size).to eq(3)
+  end
+
+end
