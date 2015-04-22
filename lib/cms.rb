@@ -1,5 +1,5 @@
-require 'lib/parser'
-require 'lib/templates'
+require 'parser'
+require 'templates'
 
 class CMS
 

@@ -1,6 +1,6 @@
 # myapp.rb
 require 'sinatra'
-require 'lib/cms'
+require 'cms'
 require "./controller"
 
 

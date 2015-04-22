@@ -1,6 +1,6 @@
 require "rexml/document"
-require 'models/contents'
-require 'models/content'
+require File.expand_path('../../models/contents', __FILE__)
+require File.expand_path('../../models/content', __FILE__)
 require 'logger'
 
 class Parser

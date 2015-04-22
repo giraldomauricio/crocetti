@@ -1,9 +1,11 @@
 language: ruby
 rvm:
-  - jruby-19mode # JRuby in 1.9 mode
-
-script: bundle exec rspec tests/specs/
+  #- jruby-19mode # JRuby in 1.9 mode
+  - 1.9.3
 
 addons:
   code_climate:
     repo_token: 83d94b53e25d638f476aac76ed13cc5564750434642d8d2827bad73b290e6c0d
+
+script: bundle exec rspec tests/specs/
+
