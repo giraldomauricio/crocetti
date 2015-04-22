@@ -10,3 +10,7 @@ TODO:
 - Instructions
 
 [![Build Status](https://travis-ci.org/giraldomauricio/crocetti.svg?branch=master)](https://travis-ci.org/giraldomauricio/crocetti)
+
+[![Code Climate](https://codeclimate.com/github/giraldomauricio/crocetti/badges/gpa.svg)](https://codeclimate.com/github/giraldomauricio/crocetti)
+
+[![Test Coverage](https://codeclimate.com/github/giraldomauricio/crocetti/badges/coverage.svg)](https://codeclimate.com/github/giraldomauricio/crocetti)
