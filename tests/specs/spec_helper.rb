@@ -1,3 +1,6 @@
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
+
 ENV['RACK_ENV'] = 'test'
 
 require 'app'  # <-- your sinatra app
@@ -8,6 +11,3 @@ require 'lib/pages'
 require 'lib/parser'
 require 'models/contents'
 require "rexml/document"
-
-require "codeclimate-test-reporter"
-CodeClimate::TestReporter.start
