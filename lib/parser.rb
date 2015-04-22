@@ -61,9 +61,11 @@ class Parser
       path += '/'
     end
     version = nil
-    version_file_location = @location + path + 'version'
-    if(File.exists? version_file_location)
-      version = File.open(version_file_location,'rb').read
+    if(@location)
+      version_file_location = @location + path + 'version'
+      if(File.exists? version_file_location)
+        version = File.open(version_file_location,'rb').read
+      end
     end
     version
   end

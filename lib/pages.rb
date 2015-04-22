@@ -19,10 +19,14 @@ class Page
   end
 
   def clone_page(path, new_name="clone")
-    if(!Dir.exists?(ENV['CONTENTS_FOLDER'] + get_containing_folder + '/' + new_name))
-      FileUtils.mkdir(ENV['CONTENTS_FOLDER'] + get_containing_folder + '/' + new_name)
-      FileUtils.cp_r(ENV['CONTENTS_FOLDER'] + path + '/.' ,ENV['CONTENTS_FOLDER'] + get_containing_folder + '/' + new_name + '/')
+    if(!Dir.exists?(get_folder_path(new_name)))
+      FileUtils.mkdir(get_folder_path(new_name))
+      FileUtils.cp_r(ENV['CONTENTS_FOLDER'] + path + '/.' ,get_folder_path(new_name))
     end
+  end
+
+  def get_folder_path(path)
+    ENV['CONTENTS_FOLDER'] + get_containing_folder + '/' + path
   end
 
   def get_versions(path)

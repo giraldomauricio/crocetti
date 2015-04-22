@@ -46,4 +46,11 @@ describe 'Pages Operation' do
 
   end
 
+  it 'returns the page path' do
+    ENV['CONTENTS_FOLDER'] = '/foo/bar'
+    page = Page.new('/section/page/')
+    expect(page.get_folder_path('blah')).to eq('/foo/bar/section/blah')
+
+  end
+
 end
