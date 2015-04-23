@@ -2,6 +2,17 @@ require File.expand_path '../spec_helper.rb', __FILE__
 
 describe 'Pages Operation' do
 
+  it 'gets the template of an existing page' do
+    ENV['CONTENTS_FOLDER'] = Dir.pwd + '/tests/specs/contents/site/'
+    page = Page.new('section1/subsection1/page1')
+    expect(page.get_template).to eq(true)
+  end
+
+  it 'cannot get the template of an un-existing page' do
+    page = Page.new('section1/subsection1/foo')
+    expect(page.get_template).to eq(false)
+  end
+
   it "creates a page object of an existing page" do
 
     ENV['CONTENTS_FOLDER'] = Dir.pwd + '/tests/specs/contents/site/'

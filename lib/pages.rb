@@ -13,16 +13,23 @@ class Page
     parser = Parser.new
     @current = parser.get_version(path)
     @versions = []
-    @template = template
+    @template = template if (!get_template)
     get_versions
+  end
+
+  def get_template
+    result = false
     if (@current && @current != "0")
-      current_content_file = ENV['CONTENTS_FOLDER'] + path + '/version' + @current + '.xml'
+      current_content_file = ENV['CONTENTS_FOLDER'] + @path + '/version' + @current + '.xml'
       if(File.exists?(current_content_file))
         @content = File.open(current_content_file,'rb').read
-        content_obj = parser.pull_page_information(path,@content)
+        parser = Parser.new
+        content_obj = parser.pull_page_information(@path,@content)
         @template = content_obj.template
+        result = true
       end
     end
+    result
   end
 
   def get_containing_folder
