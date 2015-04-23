@@ -61,6 +61,7 @@ class Parser
   end
 
   def get_version(path)
+    @log.info("Parser - Get Version:#{path} - Location: #{@location} ")
     if(path[-1,1] != '/')
       path += '/'
     end
@@ -71,6 +72,7 @@ class Parser
         version = File.open(version_file_location,'rb').read
       end
     end
+    @log.info("Parser - Get Version Version:#{version}")
     version
   end
 
@@ -82,6 +84,7 @@ class Parser
     version = get_version(path)
     if (version)
       contents_file = @location + path + 'version' + version + '.xml'
+      @log.info("Parser - Get Contents:#{contents_file}")
       if(File.exists?(contents_file))
         contents = File.open(contents_file,'rb').read
       end

@@ -9,7 +9,8 @@ describe 'Pages Operation' do
     expect(page.current).to eq('2')
     expect(page.path).to eq('section1/subsection1/page1')
     expect(page.versions).to eq(["1","2"])
-
+    expect(page.content.inspect).to include('Some HTML 4')
+    expect(page.content.inspect).to include('Some HTML 6')
   end
 
   it "creates a page object of a non existing page" do
@@ -50,6 +51,21 @@ describe 'Pages Operation' do
     ENV['CONTENTS_FOLDER'] = '/foo/bar'
     page = Page.new('/section/page/')
     expect(page.get_folder_path('blah')).to eq('/foo/bar/section/blah')
+
+  end
+
+  it 'creates a new version' do
+
+    ENV['CONTENTS_FOLDER'] = Dir.pwd + '/tests/specs/contents/site/'
+    FileUtils.cp(Dir.pwd + '/tests/specs/contents/site/section1/subsection1/page1/version',Dir.pwd + '/tests/specs/contents/site/section1/subsection1/page1/version.bk')
+    page = Page.new('section1/subsection1/page1')
+    page.save_page
+    expect(page.current).to eq('3')
+    expect(page.versions).to eq(["1","2","3"])
+    FileUtils.cp(Dir.pwd + '/tests/specs/contents/site/section1/subsection1/page1/version.bk',Dir.pwd + '/tests/specs/contents/site/section1/subsection1/page1/version')
+    File.delete(Dir.pwd + '/tests/specs/contents/site/section1/subsection1/page1/version3.xml')
+    File.delete(Dir.pwd + '/tests/specs/contents/site/section1/subsection1/page1/version.bk')
+
 
   end
 
