@@ -14,7 +14,7 @@ class Page
     @current = parser.get_version(path)
     @versions = []
     @template = template
-    get_versions(path)
+    get_versions
     if (@current && @current != "0")
       current_content_file = ENV['CONTENTS_FOLDER'] + path + '/version' + @current + '.xml'
       if(File.exists?(current_content_file))
@@ -44,19 +44,24 @@ class Page
     new_file = ENV['CONTENTS_FOLDER'] + @path + '/version' + @current + '.xml'
     @log.info("Page - Save File:#{new_file}")
     File.open(new_file, 'w') { |file| file.write(@content) }
-    get_versions(@path)
+    get_versions
   end
 
-  def get_folder_path(path)
+  def get_folder_path(path=nil)
+    path = @path if !path
     ENV['CONTENTS_FOLDER'] + get_containing_folder + '/' + path
   end
 
-  def get_versions(path)
+  def get_real_path
+    ENV['CONTENTS_FOLDER'] + @path
+  end
+
+  def get_versions
     @versions = []
-    if(Dir.exists?(ENV['CONTENTS_FOLDER'] + path))
-      Dir.foreach(ENV['CONTENTS_FOLDER'] + path) do |entry|
+    if(Dir.exists?(get_real_path))
+      Dir.foreach(get_real_path) do |entry|
         next if (entry == '..' || entry == '.')
-        if (File.file?(ENV['CONTENTS_FOLDER'] + path + '/' + entry) && entry.include?('.xml') && entry.include?('version'))
+        if (File.file?(get_real_path + '/' + entry) && entry.include?('.xml') && entry.include?('version'))
           @versions << entry.gsub('version','').gsub('.xml','')
         else
         end

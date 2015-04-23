@@ -31,6 +31,13 @@ describe 'Pages Operation' do
 
   end
 
+  it 'gets the real path' do
+    ENV['CONTENTS_FOLDER'] = Dir.pwd + '/tests/specs/contents/site/'
+    page = Page.new('foo/bar/doh')
+    expect(page.get_real_path).to eq(ENV['CONTENTS_FOLDER'] + 'foo/bar/doh')
+
+  end
+
   it "clones a page" do
 
     ENV['CONTENTS_FOLDER'] = Dir.pwd + '/tests/specs/contents/site/'
