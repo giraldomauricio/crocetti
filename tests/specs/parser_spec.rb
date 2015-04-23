@@ -90,6 +90,19 @@ describe 'Handles the versions' do
     expect(content).to be_nil
   end
 
+  it 'pulls the page information' do
+    ENV['CONTENTS_FOLDER'] = Dir.pwd + '/tests/specs/contents/site/'
+    parser = Parser.new
+    page_contents = parser.get_contents('section1/subsection1/page1')
+    content_obj = parser.pull_page_information('section1/subsection1/page1',page_contents)
+    puts content_obj.inspect
+    expect(content_obj.template).to eq('template1.html')
+    expect(content_obj.version).to eq('1')
+    expect(content_obj.name).to eq('section1/subsection1/page1')
+    expect(content_obj.contents.inspect).to include('Some HTML 4')
+    expect(content_obj.contents.inspect).to include('Some HTML 6')
+  end
+
 end
 
 describe 'Load contents' do

@@ -6,7 +6,6 @@ ENV['RACK_ENV'] = 'test'
 
 require File.expand_path '../../../app', __FILE__
 
-#require 'app'  # <-- your sinatra app
 require 'rspec'
 require 'rack/test'
 require 'templates'

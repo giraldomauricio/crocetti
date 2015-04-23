@@ -4,20 +4,23 @@ require 'logger'
 
 class Page
 
-  attr_accessor :path, :current, :versions, :content
+  attr_accessor :path, :current, :versions, :content, :template
 
-  def initialize (path)
+  def initialize (path,template=nil)
     @log = Logger.new(STDOUT)
     @log.info("Page - Initialize")
     @path = path
     parser = Parser.new
     @current = parser.get_version(path)
     @versions = []
+    @template = template
     get_versions(path)
-    if (@current)
+    if (@current && @current != "0")
       current_content_file = ENV['CONTENTS_FOLDER'] + path + '/version' + @current + '.xml'
-      if (File.exists?(current_content_file))
+      if(File.exists?(current_content_file))
         @content = File.open(current_content_file,'rb').read
+        content_obj = parser.pull_page_information(path,@content)
+        @template = content_obj.template
       end
     end
   end

@@ -32,16 +32,22 @@ class Parser
 
   def load_content_file(file, version = "default")
     @log.info("Parser - Load Content File:#{file} - Version: #{version} ")
-    content_obj = Content.new
+    content_obj = nil
     contents = get_contents(file)
     if(contents)
-      xml = Document.new contents
-      content_obj.name = file
-      content_obj.version = xml.elements["contents"].attributes["version"]
-      content_obj.date = xml.elements["contents"].attributes["date"]
-      content_obj.template = xml.elements["contents"].attributes["template"]
-      content_obj.contents = pull_content_tags(xml)
+      content_obj = pull_page_information(file, contents)
     end
+    content_obj
+  end
+
+  def pull_page_information(file, contents)
+    content_obj = Content.new
+    xml = Document.new contents
+    content_obj.name = file
+    content_obj.version = xml.elements["contents"].attributes["version"]
+    content_obj.date = xml.elements["contents"].attributes["date"]
+    content_obj.template = xml.elements["contents"].attributes["template"]
+    content_obj.contents = pull_content_tags(xml)
     content_obj
   end
 
@@ -65,7 +71,7 @@ class Parser
     if(path[-1,1] != '/')
       path += '/'
     end
-    version = nil
+    version = "0"
     if(@location)
       version_file_location = @location + path + 'version'
       if(File.exists? version_file_location)
